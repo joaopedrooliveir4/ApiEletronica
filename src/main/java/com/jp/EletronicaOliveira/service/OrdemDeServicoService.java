@@ -38,4 +38,8 @@ public class OrdemDeServicoService {
      public List<OrdemDeServico> buscarOrdemPorAparelho(String aparelho) {
          return ordemDeServicoRepository.findByAparelhoContainingIgnoreCase(aparelho);
      }
+
+     public OrdemDeServico enviarOrdem(OrdemDeServico ordem) {
+         return ordemDeServicoRepository.save(ordem);
+     }
 }
