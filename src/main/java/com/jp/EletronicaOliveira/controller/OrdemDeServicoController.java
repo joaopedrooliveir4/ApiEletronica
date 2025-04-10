@@ -4,6 +4,7 @@ import com.jp.EletronicaOliveira.model.OrdemDeServico;
 import com.jp.EletronicaOliveira.service.OrdemDeServicoService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -46,5 +47,19 @@ public class OrdemDeServicoController {
     @PostMapping
     public OrdemDeServico enviarOrdem(@RequestBody @Valid OrdemDeServico ordem) {
         return ordemDeServicoService.enviarOrdem(ordem);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<OrdemDeServico> atualizarOrdemServico(
+            @PathVariable Long id,
+            @RequestBody OrdemDeServico novaOrdem) {
+        OrdemDeServico atualizada = ordemDeServicoService.atualizar(id, novaOrdem);
+        return ResponseEntity.ok(atualizada);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deletarOrdemServico(@PathVariable Long id) {
+        ordemDeServicoService.deletar(id);
+        return ResponseEntity.noContent().build();
     }
 }
