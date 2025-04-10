@@ -42,4 +42,26 @@ public class OrdemDeServicoService {
      public OrdemDeServico enviarOrdem(OrdemDeServico ordem) {
          return ordemDeServicoRepository.save(ordem);
      }
+
+    public OrdemDeServico atualizar(Long id, OrdemDeServico novaOrdem) {
+        OrdemDeServico existente = ordemDeServicoRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("OS não encontrada"));
+
+        existente.setNome(novaOrdem.getNome());
+        existente.setEndereco(novaOrdem.getEndereco());
+        existente.setTelefone(novaOrdem.getTelefone());
+        existente.setAparelho(novaOrdem.getAparelho());
+        existente.setDefeito(novaOrdem.getDefeito());
+        existente.setValorPecas(novaOrdem.getValorPecas());
+        existente.setValorTotal(novaOrdem.getValorTotal());
+
+        return ordemDeServicoRepository.save(existente);
+    }
+
+    public void deletar(Long id) {
+        if (!ordemDeServicoRepository.existsById(id)) {
+            throw new RuntimeException("OS não encontrada");
+        }
+        ordemDeServicoRepository.deleteById(id);
+    }
 }
