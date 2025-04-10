@@ -1,9 +1,6 @@
 package com.jp.EletronicaOliveira.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.Data;
 
@@ -12,10 +9,8 @@ import java.math.BigDecimal;
 @Data
 @Entity // Para que ela seja reconhecida como uma tabela no banco de dados
 public class OrdemDeServico {
-    @NotBlank
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) //  esse campo é a chave
-    // primária e será gerado automaticamente
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotBlank
