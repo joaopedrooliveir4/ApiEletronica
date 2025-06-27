@@ -1,4 +1,4 @@
-# 📋 API de Ordem de Serviço - Eletrônica Oliveira
+# 📋 TechService
 
 Este projeto é uma API RESTful desenvolvida em Java com Spring Boot para gerenciamento de ordens de serviço de uma assistência técnica.
 
